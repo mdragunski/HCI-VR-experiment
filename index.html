@@ -2,29 +2,53 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Hello, World! - A-Frame</title>
+    <title>VR - Selection Methods</title>
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
-      
-    <script src="/set_timer&visuals.js"></script>
+    
+	<script src="/js/jquery-3.1.1.js"></script>
+	<script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/set_timer&visuals.js"></script>
   </head>
   <body>
     <a-scene id="scene">
-      <a-entity rotation="-4.24 119.18 0">
+	
+		<a-assets>
+			<audio id="clickAudio" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg" preload="auto">
+		</a-assets>
+  
+		<!-- -4.24 119.18 0 -->
+      <a-entity rotation="6.04 -120.38 0">
         <a-camera position="0 2 4">
           <a-cursor color="#4CC3D9" fuse="true" timeout="10"></a-cursor>
         </a-camera>
       </a-entity>
       <a-entity id="images_start" visible="true" layout="type: circle; radius: 2" rotation="0 90 0" position="1 0.8 -1">
-        <a-sphere id="startSelection" color="#88E28C" radius="0.4" position="-9.13 4 -9.09" set-start></a-sphere>
+        <a-sphere id="startSelection" color="#88E28C" radius="0.5" position="-9.13 4 -9.09" set-start=""></a-sphere>
+      </a-entity>
+	  
+	  <a-entity id="testTime" visible="true" layout="type: circle; radius: 2" rotation="0 90 0" position="1 0.8 -1">
+        <a-sphere id="testObject" color="#88E28C" radius="0.5" position="-12.13 4 -9.09" set-start=""></a-sphere>
       </a-entity>
 
       <a-entity id="links" set-selection>
-        <a-entity id="link" geometry="primitive: plane; height: 1; width: 1" color="#4CC3D9" position="5.14 5.50 0.32" rotation="0 -67 0">
-          <a-image src="/images/imagetest.jpg"></a-image>
+        <a-entity class="picture" id="leftCornerUp" geometry="primitive: plane; height: 1; width: 1" color="#4CC3D9" position="5.14 5.50 0.32" rotation="0 -67 0"
+			sound="src: #clickAudio; on: click"
+			scale="1 1 1">
+			<a-image src="/images/imagetest.jpg"></a-image>
         </a-entity>
-        <a-entity id="link" geometry="primitive: plane; height: 1; width: 1" color="#4CC3D9" position="5.14 4.00 0.32" rotation="0 -67 0"></a-entity>
-        <a-entity id="link" geometry="primitive: plane; height: 3; width: 3" color="#4CC3D9" position="5.14 3.5 -3.32" rotation="0 -67 0"></a-entity>
+        <a-entity class="picture" id="leftCornerDown" geometry="primitive: plane; height: 1; width: 1" color="#4CC3D9" position="5.14 0.00 0.32" rotation="0 -67 0">
+			<a-image src="/images/imagetest.jpg"></a-image>
+		</a-entity>
+        <a-entity class="picture" id="centered" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="6.91 2.77 4.17" rotation="0 -67 0" scale="1 1 1" visible="true">
+			<a-image src="/images/imagetest.jpg" material="" geometry=""></a-image>
+        </a-entity>
+		<a-entity class="picture" id="rightCornerUp" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="8.67 5.0 8.0" rotation="0 -67 0" scale="1 1 1" visible="true">
+			<a-image src="/images/imagetest.jpg" material="" geometry=""></a-image>
+        </a-entity>
+		<a-entity class="picture" id="rightCornerBottom" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="8.67 0.26 8" rotation="0 -67 0" scale="1 1 1" visible="true">
+			<a-image src="/images/imagetest.jpg" material="" geometry=""></a-image>
+        </a-entity>
       </a-entity>
 
 
