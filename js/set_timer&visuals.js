@@ -63,6 +63,8 @@ $(function() {
 					
 					counter = counter + 1;
 				}
+				
+				$('a-image', this).attr("src","/images/sunrise.jpg")
 			});
 		});
 		
