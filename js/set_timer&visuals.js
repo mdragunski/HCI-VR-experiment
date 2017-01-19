@@ -53,12 +53,16 @@ $(function() {
 				console.log(pictureId + " Click Time: " + endTime.getTime());
 				
 				var objPairTiming = selectionTries.get(counter);
-				if(objPairTiming){
+				if(objPairTiming && objPairTiming.endTime == -1){
 					objPairTiming.endTime = endTime.getTime();
 					objPairTiming.picture = pictureId;
+					
+					$("#startSelection").each(function(){
+						$(this).attr("color","#0000FF");
+					});
+					
 					counter = counter + 1;
 				}
-				
 			});
 		});
 		
@@ -73,6 +77,8 @@ $(function() {
 				console.log($(this).attr("id") + " Leave Time: " + startTime.getTime());
 			});*/
 			$(this).click(function(){
+				$(this).attr("color","#88E28C");
+				
 				var startTime = new Date();
 				console.log($(this).attr("id") + " Leave Time: " + startTime.getTime());
 				
@@ -80,7 +86,7 @@ $(function() {
 			});
 		});
 		
-		$("#testObject").each(function(){
+		$("#endSesion").each(function(){
 			/*$(this).mouseleave(function(){
 				startTime = new Date();
 				console.log($(this).attr("id") + " Leave Time: " + startTime.getTime());
@@ -91,7 +97,42 @@ $(function() {
 			});*/
 			$(this).click(function(){
 				console.log(selectionTries);
+				var selectionText = "id,startTime,endTime,seconds,picture\n";
+				for (var [key, objPairTiming] of selectionTries) {
+					/*selectionText.concat(String(key)).concat(",");
+					selectionText.concat(String(objPairTiming.startTime)).concat(",");
+					selectionText.concat(String(objPairTiming.endTime)).concat(",");
+					var timeDuration =  objPairTiming.endTime - selectionTries.get(key).startTime;
+					selectionText.concat(String(timeDuration)).concat(",");
+					selectionText.concat(String(objPairTiming.picture));
+					selectionText.concat("\n");*/
+					
+					selectionText = selectionText + key + ",";
+					selectionText = selectionText + objPairTiming.startTime + ",";
+					selectionText = selectionText + objPairTiming.endTime + ",";
+					var timeDuration =  (objPairTiming.endTime - selectionTries.get(key).startTime)/1000;
+					selectionText = selectionText + timeDuration + ",";
+					selectionText = selectionText + objPairTiming.picture + "\n";
+				}
+				
+				saveData(selectionText, "vrSelectionTargetTiming.csv");
 			});
 		});
+		
+		
+		var a = document.createElement("a");
+		document.body.appendChild(a);
+		a.style = "display: none";
+	
+		function saveData(data, fileName) {
+			//var json = JSON.stringify(data);
+			//var blob = new Blob([json], {type: "octet/stream"});
+			var blob = new Blob([data], {type: "octet/stream"});
+			var url = window.URL.createObjectURL(blob);
+			a.href = url;
+			a.download = fileName;
+			a.click();
+			window.URL.revokeObjectURL(url);
+		}
 	});
 });

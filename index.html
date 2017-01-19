@@ -24,11 +24,11 @@
         </a-camera>
       </a-entity>
       <a-entity id="images_start" visible="true" layout="type: circle; radius: 2" rotation="0 90 0" position="1 0.8 -1">
-        <a-sphere id="startSelection" color="#88E28C" radius="0.5" position="-9.13 4 -9.09" set-start=""></a-sphere>
+        <a-sphere id="startSelection" color="#0000FF" radius="0.5" position="-9.13 4 -9.09" set-start=""></a-sphere>
       </a-entity>
 	  
-	  <a-entity id="testTime" visible="true" layout="type: circle; radius: 2" rotation="0 90 0" position="1 0.8 -1">
-        <a-sphere id="testObject" color="#88E28C" radius="0.5" position="-12.13 4 -9.09" set-start=""></a-sphere>
+	  <a-entity id="saveTime" visible="true" layout="type: circle; radius: 2" rotation="0 90 0" position="1 0.8 -1">
+        <a-sphere id="endSesion" color="#FF0000" radius="0.5" position="-2.00 4 -12.72" ></a-sphere>
       </a-entity>
 
       <a-entity id="links" set-selection>
@@ -37,16 +37,24 @@
 			scale="1 1 1">
 			<a-image src="/images/imagetest.jpg"></a-image>
         </a-entity>
-        <a-entity class="picture" id="leftCornerDown" geometry="primitive: plane; height: 1; width: 1" color="#4CC3D9" position="5.14 0.00 0.32" rotation="0 -67 0">
+        <a-entity class="picture" id="leftCornerDown" geometry="primitive: plane; height: 1; width: 1" color="#4CC3D9" position="5.14 0.00 0.32" rotation="0 -67 0"
+			sound="src: #clickAudio; on: click">
 			<a-image src="/images/imagetest.jpg"></a-image>
 		</a-entity>
-        <a-entity class="picture" id="centered" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="6.91 2.77 4.17" rotation="0 -67 0" scale="1 1 1" visible="true">
+        <a-entity class="picture" id="centered" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="6.91 2.77 4.17" rotation="0 -67 0" 
+			scale="1 1 1" visible="true"
+			sound="src: #clickAudio; on: click">
 			<a-image src="/images/imagetest.jpg" material="" geometry=""></a-image>
         </a-entity>
-		<a-entity class="picture" id="rightCornerUp" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="8.67 5.0 8.0" rotation="0 -67 0" scale="1 1 1" visible="true">
+		<a-entity class="picture" id="rightCornerUp" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="8.67 5.0 8.0" rotation="0 -67 0" 
+			scale="1 1 1" 
+			visible="true"
+			sound="src: #clickAudio; on: click">
 			<a-image src="/images/imagetest.jpg" material="" geometry=""></a-image>
         </a-entity>
-		<a-entity class="picture" id="rightCornerBottom" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="8.67 0.26 8" rotation="0 -67 0" scale="1 1 1" visible="true">
+		<a-entity class="picture" id="rightCornerBottom" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="8.67 0.26 8" rotation="0 -67 0" 
+			scale="1 1 1" visible="true"
+			sound="src: #clickAudio; on: click">
 			<a-image src="/images/imagetest.jpg" material="" geometry=""></a-image>
         </a-entity>
       </a-entity>
