@@ -5,6 +5,8 @@
     <title>VR - Selection Methods</title>
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
+
+    <!-- <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script> -->
     
 	<script src="/js/jquery-3.1.1.js"></script>
 	<script src="/js/jquery-3.1.1.min.js"></script>
@@ -21,7 +23,8 @@
 		<!-- 6.04 -120.38 0 -->
       <a-entity rotation="-4.24 119.18 0">
         <a-camera position="0 2 4">
-          <a-cursor color="#4CC3D9" fuse="true" timeout="10"></a-cursor>
+          <a-cursor color="#4CC3D9" fuse="true" timeout="10" position="0 0 -3"></a-cursor>
+          <!-- <a-entity id="cursor-ctrl" vive-controls="hand: right"></a-entity> -->
         </a-camera>
       </a-entity>
       <a-entity id="images_start" visible="true" layout="type: circle; radius: 2" rotation="0 90 0" position="1 0.8 -1">
