@@ -6,8 +6,8 @@
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
 
-    <!-- <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script> -->
-    
+	<!-- <script src="https://rawgit.com/bryik/aframe-vive-cursor-component/master/dist/aframe-vive-cursor-component.min.js"></script> -->	
+	
 	<script src="/js/jquery-3.1.1.js"></script>
 	<script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/set_timer&visuals.js"></script>
@@ -16,7 +16,7 @@
     <a-scene id="scene">
 	
 		<a-assets>
-			<audio id="clickAudio" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg" preload="auto">
+			<!-- <audio id="clickAudio" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg" preload="auto"> -->
 		</a-assets>
   
 		<!-- -4.24 119.18 0 -->
@@ -28,36 +28,40 @@
         </a-camera>
       </a-entity>
       <a-entity id="images_start" visible="true" layout="type: circle; radius: 2" rotation="0 90 0" position="1 0.8 -1">
-        <a-sphere id="startSelection" color="#0000FF" radius="0.5" position="-9.13 4 -9.09" set-start=""></a-sphere>
+        <a-sphere id="startSelection" color="#FF5733" radius="0.5" position="-9.13 4 -9.09" set-start=""></a-sphere>
       </a-entity>
 	  
-	  <a-entity id="saveTime" visible="true" layout="type: circle; radius: 2" rotation="0 90 0" position="1 0.8 -1">
-        <a-sphere id="endSesion" color="#FF0000" radius="0.5" position="-2.00 4 -12.72" ></a-sphere>
-      </a-entity>
+	  <!-- <a-entity id="saveTime" visible="true" layout="type: circle; radius: 2" rotation="0 90 0" position="1 0.8 -1"> -->
+        <!-- <a-sphere id="endSesion" color="#FF0000" radius="0.5" position="-2.00 4 -12.72" ></a-sphere> -->
+      <!-- </a-entity> -->
 
       <a-entity id="links" set-selection>
         <a-entity class="picture" id="leftCornerUp" geometry="primitive: plane; height: 1; width: 1" color="#4CC3D9" position="5.14 5.50 0.32" rotation="0 -67 0"
 			sound="src: #clickAudio; on: click"
-			scale="1 1 1">
+			scale="1 1 1"
+			visible="false">
 			<a-image src="/images/imagetest.jpg"></a-image>
         </a-entity>
         <a-entity class="picture" id="leftCornerDown" geometry="primitive: plane; height: 1; width: 1" color="#4CC3D9" position="5.14 0.00 0.32" rotation="0 -67 0"
-			sound="src: #clickAudio; on: click">
+			sound="src: #clickAudio; on: click"
+			visible="false">
 			<a-image src="/images/imagetest.jpg"></a-image>
 		</a-entity>
         <a-entity class="picture" id="centered" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="6.91 2.77 4.17" rotation="0 -67 0" 
-			scale="1 1 1" visible="true"
+			scale="1 1 1" 
+			visible="false"
 			sound="src: #clickAudio; on: click">
 			<a-image src="/images/imagetest.jpg" material="" geometry=""></a-image>
         </a-entity>
 		<a-entity class="picture" id="rightCornerUp" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="8.67 5.0 8.0" rotation="0 -67 0" 
 			scale="1 1 1" 
-			visible="true"
+			visible="false"
 			sound="src: #clickAudio; on: click">
 			<a-image src="/images/imagetest.jpg" material="" geometry=""></a-image>
         </a-entity>
 		<a-entity class="picture" id="rightCornerBottom" geometry="primitive:plane;height:1;width:1" color="#4CC3D9" position="8.67 0.26 8" rotation="0 -67 0" 
-			scale="1 1 1" visible="true"
+			scale="1 1 1" 
+			visible="false"
 			sound="src: #clickAudio; on: click">
 			<a-image src="/images/imagetest.jpg" material="" geometry=""></a-image>
         </a-entity>
