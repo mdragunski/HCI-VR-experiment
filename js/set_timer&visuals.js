@@ -22,12 +22,12 @@ $(function() {
 		var counter = 0;
 		var selectionTries = new Map();
 		
-		var scaleSmall = 1;
-		var scaleMedium = 2.5;
-		var scaleBig = 4;
+		var scaleSmall = 0.5;
+		var scaleMedium = 2;
+		var scaleBig = 3;
 		
 		var scaleIndex = 0;
-		var sorted = true;
+		var sorted = false;
 		
 		var scales = [scaleSmall, scaleMedium, scaleBig];
 		
@@ -84,7 +84,7 @@ $(function() {
 				
 				var objPairTiming = selectionTries.get(counter);
 				if(objPairTiming && objPairTiming.endTime == -1){
-					$('a-image', this).attr("src","/images/sunrise.jpg")
+					$('a-image', this).attr("src","/images/sunrise.jpg");
 					
 					objPairTiming.endTime = endTime.getTime();
 					objPairTiming.picture = pictureId;
@@ -137,6 +137,7 @@ $(function() {
 				startTime = new Date();
 				console.log($(this).attr("id") + " Leave Time: " + startTime.getTime());
 			});*/
+			
 			$(this).click(function(){
 				$(this).attr("color","#88E28C");
 				
@@ -147,6 +148,8 @@ $(function() {
 				
 				selectionTries.set(counter, new pairTiming(startTime.getTime()));
 			});
+			
+			imageRestore();
 		});
 		
 		/*$("#endSesion").each(function(){
@@ -167,7 +170,7 @@ $(function() {
 		});*/
 		
 		$(document).keydown(function(e) {
-			if (e.ctrlKey && e.keyCode == 68 /*D*/ ) {
+			if (e.keyCode == 68 /*D*/ ) {
 				var selectionText = "id,pictureScale,startTime,endTime,seconds,picture\n";
 				for (var [key, objPairTiming] of selectionTries) { //save data
 					selectionText = selectionText + key + ",";
@@ -180,7 +183,7 @@ $(function() {
 				}
 				
 				saveData(selectionText, "vrSelectionTargetTiming.csv");
-			}else if (e.ctrlKey && e.keyCode == 73 /*I*/ ) { //Initialize
+			}else if (e.keyCode == 96 /*0*/ ) { //Initialize
 				initializePicturesValues();
 				
 				if(!sorted){
@@ -199,6 +202,8 @@ $(function() {
 					});
 				}
 			}else if (e.keyCode == 39 /*arrow left*/ ) { //next picture
+				imageRestore();
+				
 				if(sorted){
 					countPicturesSelected = countPicturesSelected + 1;
 					if(countPicturesSelected > maxAmountPictures){
@@ -228,14 +233,22 @@ $(function() {
 				}else{
 					console.log("No items");
 				}
-			}else if (e.ctrlKey && e.keyCode == 88 /*X*/ ) {
+			}else if (e.keyCode == 97 /*X*/ ) {
 				sorted = true;
-			}else if (e.ctrlKey && e.keyCode == 89 /*Y*/ ) {
+			}else if (e.keyCode == 98 /*Y*/ ) {
 				sorted = false;
 			}
 		});
 		
+		function imageRestore(){
+			$(".picture").each(function(){
+				$('a-image', this).attr("src","/images/imagetest.jpg");
+			});
+		}
+		
 		function initializePicturesValues(){
+			imageRestore();
+			
 			counter = 0;
 			selectionTries = new Map();
 			
